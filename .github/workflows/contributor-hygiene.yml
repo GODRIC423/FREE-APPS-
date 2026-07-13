@@ -55,8 +55,7 @@ jobs:
             [[ -z "$ident" ]] && continue
             canon="$(git check-mailmap "$ident" || printf '%s' "$ident")"
             if ! grep -Fxq "$canon" "$allowed_file"; then
-              printf '%s -> %s
-' "$ident" "$canon" >> "$bad"
+              echo "$ident -> $canon" >> "$bad"
             fi
           done < "$identities"
 
